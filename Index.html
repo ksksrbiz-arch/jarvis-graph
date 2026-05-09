@@ -17,6 +17,7 @@
             --bg-surface: #0a1020;
             --text-primary: #eef2ff;
             --text-muted: #c7d2fe;
+            --content-max: 80rem;
         }
         
         body {
@@ -115,7 +116,7 @@
         }
 
         .nav-inner {
-            max-width: 80rem;
+            max-width: var(--content-max);
             margin: 0 auto;
             padding: 1rem;
             display: flex;
@@ -164,7 +165,7 @@
         .mobile-nav {
             width: 100%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 0.5rem;
             font-size: 0.875rem;
             font-weight: 500;
