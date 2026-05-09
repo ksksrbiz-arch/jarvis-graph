@@ -115,7 +115,7 @@
 <body class="text-white overflow-x-hidden">
     <!-- NAV -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/15 shadow-[0_8px_40px_rgba(2,6,23,0.45)]">
-        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 md:py-5 flex flex-wrap items-center justify-between gap-y-4">
             <div class="flex items-center gap-x-3">
                 <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#00f3ff] via-[#c026ff] to-[#7c3aed] flex items-center justify-center">
                     <i class="fa-solid fa-brain text-black text-3xl"></i>
@@ -139,16 +139,28 @@
                 </a>
             </div>
             
-            <div class="flex items-center gap-x-4">
+            <div class="flex flex-wrap items-center justify-end gap-3">
                 <button onclick="showDemoModal()"
-                        class="px-6 py-2.5 text-sm font-semibold rounded-3xl border border-white/30 hover:bg-white/5 transition-all">
+                        class="px-4 sm:px-6 py-2.5 text-sm font-semibold rounded-3xl border border-white/30 hover:bg-white/5 transition-all">
                     Watch 42s Demo
                 </button>
                 <button onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })"
-                        class="px-8 py-2.5 bg-white text-black font-semibold rounded-3xl hover:bg-[#00f3ff] hover:text-black transition-all flex items-center gap-x-2 text-sm">
+                        class="px-5 sm:px-8 py-2.5 bg-white text-black font-semibold rounded-3xl hover:bg-[#00f3ff] hover:text-black transition-all flex items-center gap-x-2 text-sm">
                     <span>Request Access</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </button>
+            </div>
+
+            <div class="w-full md:hidden grid grid-cols-2 gap-2 text-sm font-medium">
+                <a href="#brain" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">The Brain</a>
+                <a href="#architecture" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">Architecture</a>
+                <a href="#loop" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">How It Runs</a>
+                <a href="#graph" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">Knowledge Graph</a>
+                <a href="#security" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">Security</a>
+                <a href="https://graph.skdev-371.workers.dev/" target="_blank" rel="noopener noreferrer"
+                   class="rounded-2xl border border-[#00f3ff]/40 bg-[#00f3ff]/10 px-3 py-2 text-center text-[#00f3ff] hover:bg-[#00f3ff]/20 transition-colors">
+                    Live Graph
+                </a>
             </div>
         </div>
     </nav>
