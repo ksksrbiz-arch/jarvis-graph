@@ -130,6 +130,7 @@
                 <a href="#brain" class="hover:text-[#00f3ff] transition-colors">The Brain</a>
                 <a href="#architecture" class="hover:text-[#00f3ff] transition-colors">Architecture</a>
                 <a href="#loop" class="hover:text-[#00f3ff] transition-colors">How It Runs</a>
+                <a href="#graph" class="hover:text-[#00f3ff] transition-colors">Knowledge Graph</a>
                 <a href="#security" class="hover:text-[#00f3ff] transition-colors">Security</a>
             </div>
             
@@ -525,6 +526,111 @@
                     <div>
                         <div class="text-6xl font-semibold tracking-tighter">100%</div>
                         <div class="text-sm mt-1">audit-ready decision trail</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KNOWLEDGE GRAPH -->
+    <section id="graph" class="max-w-5xl mx-auto px-8 py-24 border-t border-white/10">
+        <div class="text-center mb-16">
+            <div class="inline-block px-5 py-1.5 rounded-3xl bg-white/5 text-xs tracking-[2px] mb-4">OPEN-SOURCE CORE</div>
+            <h2 class="section-header tracking-tighter">The Knowledge Graph<br>powering every decision</h2>
+            <p class="max-w-2xl mx-auto mt-4 text-xl text-white/70">Jarvis runs on a real, interactive Personal Knowledge Graph — an open-source force-directed visualization system that ingests your digital footprint and maps it into a living web of interconnected nodes.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Live App Card -->
+            <a href="https://graph.skdev-371.workers.dev/" target="_blank" rel="noopener noreferrer"
+               class="layer-card glass p-8 rounded-3xl border border-[#00f3ff]/30 hover:border-[#00f3ff] group block">
+                <div class="flex items-start justify-between mb-6">
+                    <div>
+                        <div class="text-xs text-[#00f3ff] font-mono mb-1">LIVE APP</div>
+                        <div class="text-2xl font-semibold tracking-tight">graph.skdev-371.workers.dev</div>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-[#00f3ff]/10 border border-[#00f3ff]/30 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[#00f3ff] text-lg"></i>
+                    </div>
+                </div>
+                <p class="text-sm text-white/70 leading-relaxed mb-6">
+                    Explore the live deployment of the Graph visualization system. Paste text or markdown to ingest it directly into the public brain, then watch the force-directed graph update in real time — nodes for concepts, edges for relationships, clusters for context.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-2xl font-mono">Force-Directed Graph</span>
+                    <span class="text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-2xl font-mono">Live Ingest</span>
+                    <span class="text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-2xl font-mono">Cloudflare Workers KV</span>
+                </div>
+                <div class="mt-6 flex items-center gap-x-2 text-sm font-semibold text-[#00f3ff] group-hover:gap-x-3 transition-all">
+                    <span>Open Live Graph</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </div>
+            </a>
+
+            <!-- GitHub Repo Card -->
+            <a href="https://github.com/ksksrbiz-arch/Graph" target="_blank" rel="noopener noreferrer"
+               class="layer-card glass p-8 rounded-3xl border border-[#c026ff]/30 hover:border-[#c026ff] group block">
+                <div class="flex items-start justify-between mb-6">
+                    <div>
+                        <div class="text-xs text-[#c026ff] font-mono mb-1">OPEN SOURCE</div>
+                        <div class="text-2xl font-semibold tracking-tight">github.com / ksksrbiz-arch / Graph</div>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-[#c026ff]/10 border border-[#c026ff]/30 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-brands fa-github text-[#c026ff] text-2xl"></i>
+                    </div>
+                </div>
+                <p class="text-sm text-white/70 leading-relaxed mb-6">
+                    The full source code for the Personal Knowledge Graph Visualization System (PKG-VS). Two coexisting tracks: a v1 static MVP you can run with a single <code class="font-mono bg-white/10 px-1.5 py-0.5 rounded text-xs">npm start</code>, and a v2 monorepo backed by Neo4j, Postgres, Redis, and Meilisearch — the same stack that powers Jarvis's brain layer.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs px-3 py-1 bg-[#c026ff]/10 text-[#c026ff] rounded-2xl font-mono">Neo4j</span>
+                    <span class="text-xs px-3 py-1 bg-[#c026ff]/10 text-[#c026ff] rounded-2xl font-mono">MCP Server</span>
+                    <span class="text-xs px-3 py-1 bg-[#c026ff]/10 text-[#c026ff] rounded-2xl font-mono">v1 MVP + v2 Monorepo</span>
+                </div>
+                <div class="mt-6 flex items-center gap-x-2 text-sm font-semibold text-[#c026ff] group-hover:gap-x-3 transition-all">
+                    <span>View Source on GitHub</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- How the Graph fits into Jarvis -->
+        <div class="glass p-10 rounded-[3rem] neon-border">
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <div>
+                    <div class="uppercase text-xs tracking-widest mb-3 text-white/50">HOW IT FITS TOGETHER</div>
+                    <h3 class="text-2xl font-semibold tracking-tight mb-4">From raw data to business intuition</h3>
+                    <p class="text-white/70 text-sm leading-relaxed">
+                        The Graph system is the engine beneath Jarvis's ② Brain layer. It ingests your emails, notes, calendar, code commits, and bookmarks — then maps every entity, event, and relationship into a queryable knowledge graph. Jarvis queries this graph on every reasoning cycle to make context-aware decisions without starting from scratch each time.
+                    </p>
+                </div>
+                <div class="space-y-4 text-sm">
+                    <div class="flex gap-x-4 p-4 bg-white/5 rounded-2xl">
+                        <div class="w-8 h-8 rounded-xl bg-[#00f3ff]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-file-import text-[#00f3ff] text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold mb-1">Ingesters</div>
+                            <div class="text-white/60">Claude Code projects, git history, markdown files, and bookmarks flow in automatically. The v2 API also accepts live paste via <code class="font-mono bg-white/10 px-1 rounded">/api/v1/public/ingest</code>.</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-4 p-4 bg-white/5 rounded-2xl">
+                        <div class="w-8 h-8 rounded-xl bg-[#c026ff]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-circle-nodes text-[#c026ff] text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold mb-1">Graph Layer</div>
+                            <div class="text-white/60">Entities become nodes; relationships become edges. Vector embeddings enable semantic similarity search across the entire knowledge base.</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-4 p-4 bg-white/5 rounded-2xl">
+                        <div class="w-8 h-8 rounded-xl bg-[#7c3aed]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fa-solid fa-plug text-[#7c3aed] text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold mb-1">MCP Server</div>
+                            <div class="text-white/60">A built-in Model Context Protocol server (<code class="font-mono bg-white/10 px-1 rounded">scripts/mcp-server.mjs</code>) exposes the graph to Claude, Cursor, and any MCP client — the same interface Jarvis uses internally.</div>
+                        </div>
                     </div>
                 </div>
             </div>
