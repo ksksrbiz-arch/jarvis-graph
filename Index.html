@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis • Autonomous Business OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-purple: #c026ff;
+            --neon-violet: #7c3aed;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-purple);
+        }
+
+        .glass {
+            background: rgba(10, 10, 20, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .neon-border {
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4),
+                        0 0 40px rgba(192, 38, 255, 0.2);
+        }
+
+        .section-header {
+            font-size: 3.5rem;
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .layer-card {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .layer-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.3);
+        }
+
+        .flow-step {
+            transition: all 0.3s ease;
+        }
+
+        .neon-pulse {
+            animation: neon-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neon-pulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 243, 255, 0.5); }
+            50% { box-shadow: 0 0 35px rgba(192, 38, 255, 0.7); }
+        }
+
+        .data-flow {
+            animation: data-flow 3s linear infinite;
+        }
+
+        .brain-glow {
+            filter: drop-shadow(0 0 25px #00f3ff);
+        }
+
+        .metric-number {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="bg-[#050505] text-white overflow-x-hidden">
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#00f3ff] via-[#c026ff] to-[#7c3aed] flex items-center justify-center">
+                    <i class="fa-solid fa-brain text-black text-3xl"></i>
+                </div>
+                <div>
+                    <span class="font-display text-3xl font-semibold tracking-tighter">JARVIS</span>
+                    <span class="text-[10px] text-white/50 block -mt-1">AUTONOMOUS OS</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
+                <a href="#brain" class="hover:text-[#00f3ff] transition-colors">The Brain</a>
+                <a href="#architecture" class="hover:text-[#00f3ff] transition-colors">Architecture</a>
+                <a href="#loop" class="hover:text-[#00f3ff] transition-colors">How It Runs</a>
+                <a href="#security" class="hover:text-[#00f3ff] transition-colors">Security</a>
+            </div>
+            
+            <div class="flex items-center gap-x-4">
+                <button onclick="showDemoModal()"
+                        class="px-6 py-2.5 text-sm font-semibold rounded-3xl border border-white/30 hover:bg-white/5 transition-all">
+                    Watch 47s Demo
+                </button>
+                <button onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })"
+                        class="px-8 py-2.5 bg-white text-black font-semibold rounded-3xl hover:bg-[#00f3ff] hover:text-black transition-all flex items-center gap-x-2 text-sm">
+                    <span>Request Access</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="min-h-[100dvh] flex items-center relative pt-16">
+        <div class="absolute inset-0 bg-[radial-gradient(#1a1a2e_0.8px,transparent_1px)] bg-[length:4px_4px]"></div>
+        
+        <div class="max-w-5xl mx-auto px-8 relative z-10 pt-12">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl border border-[#00f3ff]/30 bg-[#00f3ff]/10 mb-6">
+                    <div class="w-2 h-2 bg-[#00f3ff] rounded-full animate-pulse"></div>
+                    <span class="uppercase tracking-[3px] text-xs font-mono text-[#00f3ff]">LIMITED ROLLOUT • MAY 2026</span>
+                </div>
+                
+                <h1 class="section-header leading-none tracking-tighter mb-6">
+                    The brain that<br>
+                    <span class="bg-gradient-to-r from-[#00f3ff] via-[#c026ff] to-[#7c3aed] bg-clip-text text-transparent">runs your business</span><br>
+                    for you.
+                </h1>
+                
+                <p class="max-w-2xl text-2xl text-white/80 mb-10 leading-tight">
+                    A living AI operating system that manages finances, vendors, and cash flow 24/7 — 
+                    learning your business like a second mind.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="document.getElementById('brain').scrollIntoView({ behavior: 'smooth' })"
+                            class="group px-10 py-4 bg-gradient-to-r from-[#00f3ff] to-[#c026ff] text-black font-semibold rounded-3xl flex items-center justify-center gap-x-3 text-lg hover:brightness-110 transition-all">
+                        <span>See How the Brain Works</span>
+                        <i class="fa-solid fa-arrow-down group-active:translate-y-0.5 transition"></i>
+                    </button>
+                    
+                    <button onclick="showDemoModal()"
+                            class="px-8 py-4 border border-white/40 hover:bg-white/5 font-semibold rounded-3xl flex items-center justify-center gap-x-3 text-lg transition-all">
+                        <i class="fa-solid fa-play mr-1"></i>
+                        <span>Watch 47-second demo</span>
+                    </button>
+                </div>
+                
+                <div class="mt-8 flex items-center gap-x-8 text-sm text-white/60">
+                    <div class="flex -space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-zinc-700 border-2 border-[#050505]"></div>
+                        <div class="w-8 h-8 rounded-full bg-zinc-700 border-2 border-[#050505]"></div>
+                        <div class="w-8 h-8 rounded-full bg-zinc-700 border-2 border-[#050505]"></div>
+                    </div>
+                    <div>Trusted by founders running <span class="font-mono">$12M+</span> in annual revenue</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hero visual hint -->
+        <div class="absolute bottom-12 right-8 hidden xl:block">
+            <div class="text-right">
+                <div class="text-xs uppercase tracking-widest text-white/40 mb-1">POWERED BY</div>
+                <div class="font-mono text-sm">NEO4J • CLOUDFLARE • STRIPE</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROBLEM -->
+    <section class="max-w-5xl mx-auto px-8 py-20 border-b border-white/10">
+        <div class="grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5">
+                <div class="uppercase tracking-[2px] text-xs text-[#c026ff] font-semibold mb-3">THE HIDDEN COST OF GROWTH</div>
+                <h2 class="text-5xl font-semibold tracking-tighter leading-none">Founders are drowning in the details.</h2>
+            </div>
+            <div class="md:col-span-7 text-xl text-white/80 space-y-6">
+                <p>You didn’t start a business to become a full-time accountant, vendor manager, and cash-flow forecaster.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                    <div class="glass p-5 rounded-3xl">
+                        <div class="text-4xl font-semibold text-[#00f3ff] metric-number">23</div>
+                        <div class="text-sm mt-1">hours/week lost to finance admin</div>
+                    </div>
+                    <div class="glass p-5 rounded-3xl">
+                        <div class="text-4xl font-semibold text-[#c026ff] metric-number">47%</div>
+                        <div class="text-sm mt-1">of founder decisions are low-leverage</div>
+                    </div>
+                    <div class="glass p-5 rounded-3xl">
+                        <div class="text-4xl font-semibold text-[#7c3aed] metric-number">3.2×</div>
+                        <div class="text-sm mt-1">slower scaling without automation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE BRAIN SECTION (CORE ENHANCEMENT) -->
+    <section id="brain" class="max-w-5xl mx-auto px-8 py-24">
+        <div class="text-center mb-16">
+            <div class="inline-block px-5 py-1.5 rounded-3xl bg-white/5 text-xs tracking-[2px] mb-4">NEUROSCIENCE MEETS BUSINESS OS</div>
+            <h2 class="section-header tracking-tighter">How the brain truly runs<br>your business for you</h2>
+            <p class="max-w-2xl mx-auto mt-4 text-xl text-white/70">Jarvis isn’t just software. It’s a living cognitive system modeled on how your own brain processes the world — but faster, tireless, and perfectly consistent.</p>
+        </div>
+
+        <!-- Brain Metaphor -->
+        <div class="glass p-10 md:p-14 rounded-[3rem] mb-16 neon-border">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold tracking-tight mb-6">Your business has a nervous system.<br>Most founders are still using a calculator.</h3>
+                    <div class="space-y-5 text-lg text-white/80">
+                        <p>Traditional tools force you to do the thinking. Jarvis does the thinking <em>for</em> you — building mental models, forming intuitions, and executing with the precision of a prefrontal cortex backed by perfect recall.</p>
+                        
+                        <div class="pt-4 border-t border-white/10">
+                            <div class="uppercase text-xs tracking-widest mb-3 text-white/50">HUMAN BRAIN → JARVIS PARALLEL</div>
+                            <div class="space-y-4 text-sm">
+                                <div class="flex gap-4"><span class="font-mono w-28 text-[#00f3ff]">Prefrontal Cortex</span> <span class="text-white/70">→ Cortex Layer (goal setting &amp; policy)</span></div>
+                                <div class="flex gap-4"><span class="font-mono w-28 text-[#c026ff]">Neocortex + Hippocampus</span> <span class="text-white/70">→ Brain Layer (pattern recognition &amp; memory)</span></div>
+                                <div class="flex gap-4"><span class="font-mono w-28 text-[#7c3aed]">Basal Ganglia</span> <span class="text-white/70">→ Executor Layer (habitual, automatic actions)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="aspect-square bg-zinc-950 rounded-3xl flex items-center justify-center relative overflow-hidden border border-white/10">
+                        <div class="absolute inset-0 bg-[conic-gradient(at_50%_50%,#00f3ff_0deg,#c026ff_120deg,#7c3aed_240deg,#00f3ff_360deg)] opacity-10 animate-[spin_25s_linear_infinite]"></div>
+                        <div class="text-center z-10">
+                            <i class="fa-solid fa-brain text-8xl text-transparent bg-clip-text bg-gradient-to-br from-[#00f3ff] to-[#c026ff]"></i>
+                            <div class="mt-6">
+                                <div class="text-sm uppercase tracking-[3px] text-white/50">30-DAY INTUITION</div>
+                                <div class="font-mono text-xs text-[#00f3ff]">VENDOR TRUST • CASH FLOW PATTERNS • ANOMALY RADAR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real Examples -->
+        <div class="mb-16">
+            <h3 class="font-semibold text-2xl mb-8 flex items-center gap-x-3">
+                <span>Real scenarios — the brain in action</span>
+            </h3>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Scenario 1 -->
+                <div class="glass p-7 rounded-3xl border-l-4 border-[#00f3ff]">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="px-3 py-1 bg-[#00f3ff]/20 text-[#00f3ff] text-xs font-mono rounded-2xl">ROUTINE</div>
+                        <span class="font-semibold">$420 invoice • Acme Corp (known vendor)</span>
+                    </div>
+                    <div class="text-sm text-white/80 leading-relaxed">
+                        Graph shows 47 successful past payments + 98% on-time score. Amount &lt; policy threshold. <span class="text-[#00f3ff]">Auto-pays in 4 seconds.</span> Updates trust score and cash-flow projection. You never see it.
+                    </div>
+                </div>
+                
+                <!-- Scenario 2 -->
+                <div class="glass p-7 rounded-3xl border-l-4 border-[#c026ff]">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="px-3 py-1 bg-[#c026ff]/20 text-[#c026ff] text-xs font-mono rounded-2xl">HIGH VALUE</div>
+                        <span class="font-semibold">$1,850 invoice • New vendor</span>
+                    </div>
+                    <div class="text-sm text-white/80 leading-relaxed">
+                        Confidence score 87%. Similar to 3 trusted vendors in graph. Policy: flag &gt;$500 for new vendors. <span class="text-[#c026ff]">Pings your phone with full context + recommended decision.</span> You approve in 12 seconds via mobile.
+                    </div>
+                </div>
+                
+                <!-- Scenario 3 -->
+                <div class="glass p-7 rounded-3xl border-l-4 border-[#7c3aed]">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <div class="px-3 py-1 bg-[#7c3aed]/20 text-[#7c3aed] text-xs font-mono rounded-2xl">ANOMALY</div>
+                        <span class="font-semibold">$3,100 invoice • 3× normal amount</span>
+                    </div>
+                    <div class="text-sm text-white/80 leading-relaxed">
+                        Graph detects deviation from 18-month pattern. LLM surfaces 4 possible explanations ranked by likelihood. <span class="text-[#7c3aed]">Immediate human flag + detailed reasoning trace.</span> You discover it was a legitimate bulk order and approve with one tap.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Simulator -->
+        <div class="glass p-10 rounded-[3rem]">
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="flex-1">
+                    <div class="uppercase tracking-widest text-xs mb-2 text-white/50">LIVE SIMULATOR</div>
+                    <h4 class="text-3xl font-semibold tracking-tight">Test the brain yourself</h4>
+                    <p class="text-white/70 mt-2">Enter a hypothetical transaction and watch Jarvis reason like a CFO with perfect memory.</p>
+                </div>
+                
+                <div class="flex-1 w-full">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs text-white/60 mb-1.5">Invoice Amount</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3.5 text-xl">$</span>
+                                <input id="sim-amount" type="number" value="650" class="w-full bg-zinc-900 border border-white/20 pl-9 py-3.5 rounded-2xl text-xl font-mono focus:outline-none focus:border-[#00f3ff]">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs text-white/60 mb-1.5">Vendor Status</label>
+                            <select id="sim-vendor" class="w-full bg-zinc-900 border border-white/20 py-3.5 px-4 rounded-2xl focus:outline-none focus:border-[#00f3ff]">
+                                <option value="known">Known vendor (47 past payments)</option>
+                                <option value="new">New vendor</option>
+                                <option value="anomaly">Anomalous pattern detected</option>
+                            </select>
+                        </div>
+                        
+                        <button onclick="runBrainSimulation()" 
+                                class="w-full py-4 bg-white text-black font-semibold rounded-3xl hover:bg-[#00f3ff] transition flex items-center justify-center gap-x-2">
+                            <span>Run Jarvis Reasoning</span>
+                            <i class="fa-solid fa-microchip"></i>
+                        </button>
+                        
+                        <div id="sim-result" class="hidden mt-4 p-5 bg-zinc-950 rounded-2xl border border-white/10 text-sm font-mono"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUR LAYER ARCHITECTURE -->
+    <section id="architecture" class="bg-zinc-950 py-20 border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <div class="text-[#00f3ff] text-xs tracking-[3px] mb-2">THE COGNITIVE STACK</div>
+                <h2 class="section-header tracking-tighter">Four layers. One living brain.</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Layer 1 -->
+                <div onclick="showLayerModal(0)" class="layer-card glass p-8 rounded-3xl cursor-pointer border border-[#00f3ff]/30 hover:border-[#00f3ff]">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <div class="text-xs text-[#00f3ff] font-mono">① CORTEX</div>
+                            <div class="text-3xl font-semibold tracking-tight mt-1">The Thinker</div>
+                        </div>
+                        <i class="fa-solid fa-cloud text-4xl text-[#00f3ff]/70"></i>
+                    </div>
+                    <div class="mt-6 text-sm text-white/70">Cloudflare Worker • LLM reasoning • Goal queue processor • Audit emitter</div>
+                    <div class="mt-4 text-xs px-3 py-1 bg-[#00f3ff]/10 inline-block rounded">Strategic executive function</div>
+                </div>
+                
+                <!-- Layer 2 -->
+                <div onclick="showLayerModal(1)" class="layer-card glass p-8 rounded-3xl cursor-pointer border border-[#c026ff]/30 hover:border-[#c026ff]">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <div class="text-xs text-[#c026ff] font-mono">② BRAIN</div>
+                            <div class="text-3xl font-semibold tracking-tight mt-1">The Understander</div>
+                        </div>
+                        <i class="fa-solid fa-project-diagram text-4xl text-[#c026ff]/70"></i>
+                    </div>
+                    <div class="mt-6 text-sm text-white/70">Neo4j knowledge graph • Vector embeddings • Connectome stimulation • Outcome feedback</div>
+                    <div class="mt-4 text-xs px-3 py-1 bg-[#c026ff]/10 inline-block rounded">Where intuition is born</div>
+                </div>
+                
+                <!-- Layer 3 -->
+                <div onclick="showLayerModal(2)" class="layer-card glass p-8 rounded-3xl cursor-pointer border border-[#7c3aed]/30 hover:border-[#7c3aed]">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <div class="text-xs text-[#7c3aed] font-mono">③ MEMORY</div>
+                            <div class="text-3xl font-semibold tracking-tight mt-1">The Rememberer</div>
+                        </div>
+                        <i class="fa-solid fa-database text-4xl text-[#7c3aed]/70"></i>
+                    </div>
+                    <div class="mt-6 text-sm text-white/70">D1 + KV + Neo4j • Episodic event log • Policy packs • Task queue</div>
+                    <div class="mt-4 text-xs px-3 py-1 bg-[#7c3aed]/10 inline-block rounded">Perfect recall, zero forgetting</div>
+                </div>
+                
+                <!-- Layer 4 -->
+                <div onclick="showLayerModal(3)" class="layer-card glass p-8 rounded-3xl cursor-pointer border border-emerald-400/30 hover:border-emerald-400">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <div class="text-xs text-emerald-400 font-mono">④ MCP MESH</div>
+                            <div class="text-3xl font-semibold tracking-tight mt-1">The Executor</div>
+                        </div>
+                        <i class="fa-solid fa-plug text-4xl text-emerald-400/70"></i>
+                    </div>
+                    <div class="mt-6 text-sm text-white/70">Stripe • Plaid • QuickBooks • Email parsing • Linear sync • Encrypted adapters</div>
+                    <div class="mt-4 text-xs px-3 py-1 bg-emerald-400/10 inline-block rounded">Where thought becomes action</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTONOMOUS LOOP -->
+    <section id="loop" class="max-w-5xl mx-auto px-8 py-24">
+        <div class="text-center mb-12">
+            <h2 class="section-header tracking-tighter">The living finance loop</h2>
+            <p class="text-xl text-white/70 max-w-lg mx-auto mt-3">Every week the brain wakes up, reasons, acts, and gets smarter — without you lifting a finger.</p>
+        </div>
+        
+        <!-- Visual Flow -->
+        <div class="glass p-10 rounded-[3rem] mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-4 relative">
+                <!-- Steps -->
+                <div class="flow-step col-span-1 md:col-span-1 flex flex-col items-center text-center p-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00f3ff] to-cyan-400 flex items-center justify-center mb-4 neon-glow">
+                        <i class="fa-solid fa-clock text-black text-3xl"></i>
+                    </div>
+                    <div class="font-semibold">1. Cron wakes it</div>
+                    <div class="text-xs text-white/60 mt-1">Weekly AP/AR goal fires</div>
+                </div>
+                
+                <div class="flow-step col-span-1 md:col-span-1 flex flex-col items-center text-center p-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#c026ff] to-violet-500 flex items-center justify-center mb-4 neon-glow">
+                        <i class="fa-solid fa-brain text-black text-3xl"></i>
+                    </div>
+                    <div class="font-semibold">2. Brain reasons</div>
+                    <div class="text-xs text-white/60 mt-1">Reads graph + current cash position</div>
+                </div>
+                
+                <div class="flow-step col-span-1 md:col-span-1 flex flex-col items-center text-center p-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#7c3aed] to-purple-600 flex items-center justify-center mb-4 neon-glow">
+                        <i class="fa-solid fa-shield-halved text-white text-3xl"></i>
+                    </div>
+                    <div class="font-semibold">3. Permission gate</div>
+                    <div class="text-xs text-white/60 mt-1">Confidence + policy check</div>
+                </div>
+                
+                <div class="flow-step col-span-1 md:col-span-1 flex flex-col items-center text-center p-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center mb-4 neon-glow">
+                        <i class="fa-solid fa-mobile-screen-button text-white text-3xl"></i>
+                    </div>
+                    <div class="font-semibold">4. Human gate (if needed)</div>
+                    <div class="text-xs text-white/60 mt-1">&gt;$500 or new vendor</div>
+                </div>
+                
+                <div class="flow-step col-span-1 md:col-span-1 flex flex-col items-center text-center p-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-400 flex items-center justify-center mb-4 neon-glow">
+                        <i class="fa-solid fa-bolt text-black text-3xl"></i>
+                    </div>
+                    <div class="font-semibold">5. Executes</div>
+                    <div class="text-xs text-white/60 mt-1">Stripe / Plaid / QuickBooks</div>
+                </div>
+                
+                <div class="flow-step col-span-1 md:col-span-1 flex flex-col items-center text-center p-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-400 flex items-center justify-center mb-4 neon-glow">
+                        <i class="fa-solid fa-sync text-black text-3xl"></i>
+                    </div>
+                    <div class="font-semibold">6. Learns &amp; strengthens</div>
+                    <div class="text-xs text-white/60 mt-1">Neo4j weights updated</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 text-xs text-white/50 font-mono">→ REPEATS WITH RICHER CONTEXT EVERY CYCLE ←</div>
+        </div>
+        
+        <div class="text-center text-sm max-w-md mx-auto text-white/60">
+            After 30 days the graph has formed genuine business intuition: seasonal patterns, vendor reliability scores, and predictive cash alerts that feel almost psychic.
+        </div>
+    </section>
+
+    <!-- HUMAN + RESULTS -->
+    <section class="max-w-5xl mx-auto px-8 pb-24">
+        <div class="grid md:grid-cols-12 gap-8">
+            <!-- HITL -->
+            <div class="md:col-span-5 glass p-10 rounded-[3rem]">
+                <h3 class="font-semibold text-2xl tracking-tight mb-6">You stay in control.<br>The brain does the work.</h3>
+                <div class="space-y-6 text-sm">
+                    <div>
+                        <div class="font-semibold text-emerald-400 mb-2">✓ RUNS WITHOUT YOU (95%+ of transactions)</div>
+                        <div class="text-white/70">Known vendors • Recurring payments • Invoice reminders • GL reconciliation</div>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-rose-400 mb-2">⚠ HUMAN REVIEW REQUIRED</div>
+                        <div class="text-white/70">Amount &gt; $500 • New/unknown vendor • Low confidence • Anomalous pattern</div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-white/10 text-xs text-white/50">Average founder review time: <span class="font-mono text-white">4 minutes per week</span></div>
+            </div>
+            
+            <!-- Results -->
+            <div class="md:col-span-7 glass p-10 rounded-[3rem]">
+                <div class="uppercase text-xs tracking-widest mb-4 text-white/50">PILOT RESULTS (FIRST 90 DAYS)</div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <div class="text-6xl font-semibold tracking-tighter text-[#00f3ff]">98.4%</div>
+                        <div class="text-sm mt-1">of transactions fully autonomous</div>
+                    </div>
+                    <div>
+                        <div class="text-6xl font-semibold tracking-tighter text-[#c026ff]">42</div>
+                        <div class="text-sm mt-1">hours/month reclaimed per founder</div>
+                    </div>
+                    <div>
+                        <div class="text-6xl font-semibold tracking-tighter text-[#7c3aed]">3.1×</div>
+                        <div class="text-sm mt-1">faster vendor onboarding</div>
+                    </div>
+                    <div>
+                        <div class="text-6xl font-semibold tracking-tighter">100%</div>
+                        <div class="text-sm mt-1">audit-ready decision trail</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECURITY & CTA -->
+    <section id="security" class="border-t border-white/10 py-20 bg-zinc-950">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+            <div class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-400 flex items-center justify-center mb-8">
+                <i class="fa-solid fa-lock text-4xl text-black"></i>
+            </div>
+            <h2 class="text-4xl font-semibold tracking-tight mb-4">Enterprise-grade security.<br>Founder-grade peace of mind.</h2>
+            <div class="max-w-md mx-auto text-white/70">AES-GCM encryption • Full audit chains • Tenant isolation • OAuth per adapter • Defensible to any auditor</div>
+            
+            <div class="mt-12">
+                <button onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })"
+                        class="px-16 py-5 bg-white text-black text-xl font-semibold rounded-3xl hover:bg-[#00f3ff] transition-all inline-flex items-center gap-x-3">
+                    <span>Request Early Access</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <div class="text-xs text-white/50 mt-4">Limited to 25 companies in 2026 • 1Commerce LLC</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-12 text-xs text-white/40 border-t border-white/10">
+        © 2026 1Commerce LLC • Internal build • "You set the policy. It runs the business."
+    </footer>
+
+    <!-- Modals -->
+    <div id="layer-modal" onclick="hideLayerModal()" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="glass max-w-2xl w-full p-10 rounded-3xl border border-white/20">
+            <div id="modal-content"></div>
+            <button onclick="hideLayerModal()" class="mt-8 text-xs uppercase tracking-widest px-6 py-2 border border-white/30 rounded-2xl hover:bg-white/5">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent-cyan', '#00f3ff');
+        }
+        
+        // Layer modal content
+        const layerData = [
+            {
+                title: "① CORTEX — The Thinker",
+                subtitle: "Cloudflare Worker + LLM Reasoning Engine",
+                content: "This is the prefrontal cortex of Jarvis. It receives goals, breaks them into executable steps, and orchestrates tools. Every decision is logged with correlationId for complete auditability. It only escalates when human judgment is genuinely required.",
+                tech: "LLM (Claude 3.5 / GPT-4o) • Tool calling • Goal state machine • Real-time reasoning traces"
+            },
+            {
+                title: "② BRAIN — The Understander",
+                subtitle: "Neo4j Knowledge Graph + Vector Context",
+                content: "This is where genuine business intuition emerges. Every transaction, vendor interaction, and outcome becomes a node and relationship. After ~30 days the graph develops trust scores, seasonal patterns, and predictive relationships that feel almost human.",
+                tech: "Neo4j 5.x • Vector embeddings • Connectome stimulation • Nightly LLM consolidation • Hebbian reinforcement learning"
+            },
+            {
+                title: "③ MEMORY — The Rememberer",
+                subtitle: "D1 + KV + Episodic Event Log",
+                content: "Perfect, queryable memory. Every event is stored with full context. Policies are versioned per tenant. The system can instantly recall “what happened last time we paid Acme in Q3” and use that to inform current decisions.",
+                tech: "Cloudflare D1 • KV • Policy packs • Task & goal queue • Full audit log"
+            },
+            {
+                title: "④ MCP MESH — The Executor",
+                subtitle: "Secure Financial API Adapters",
+                content: "The nervous system that actually moves money and data. All credentials are encrypted at rest with AES-GCM. Every action has a defensible audit trail. Health checks and automatic retries are built in.",
+                tech: "Stripe • Plaid • QuickBooks • Wave • Email parsing • Linear • OAuth per tenant"
+            }
+        ];
+        
+        function showLayerModal(index) {
+            const modal = document.getElementById('layer-modal');
+            const content = document.getElementById('modal-content');
+            const data = layerData[index];
+            
+            content.innerHTML = `
+                <div class="flex items-center gap-x-4 mb-6">
+                    <div class="text-4xl">${index === 0 ? '🧠' : index === 1 ? '🔗' : index === 2 ? '📚' : '⚡'}</div>
+                    <div>
+                        <div class="text-xs text-white/50">${data.subtitle}</div>
+                        <div class="text-3xl font-semibold tracking-tight">${data.title}</div>
+                    </div>
+                </div>
+                
+                <div class="text-lg text-white/90 leading-relaxed mb-8">
+                    ${data.content}
+                </div>
+                
+                <div class="bg-zinc-950 p-6 rounded-2xl border border-white/10">
+                    <div class="uppercase text-xs tracking-widest mb-3 text-white/50">UNDER THE HOOD</div>
+                    <div class="font-mono text-sm text-[#00f3ff]">${data.tech}</div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        
+        function hideLayerModal() {
+            const modal = document.getElementById('layer-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+        
+        // Brain simulator
+        function runBrainSimulation() {
+            const amount = parseFloat(document.getElementById('sim-amount').value);
+            const vendorType = document.getElementById('sim-vendor').value;
+            const resultDiv = document.getElementById('sim-result');
+            
+            let decision = '';
+            let reasoning = '';
+            let color = '';
+            
+            if (vendorType === 'known') {
+                if (amount < 500) {
+                    decision = 'AUTO-APPROVED';
+                    reasoning = `Known vendor (47 past payments, 98% reliability). Amount under threshold. Graph confidence: 96%. Executed via Stripe in 3.2s. Trust score increased.`;
+                    color = 'text-emerald-400';
+                } else {
+                    decision = 'FLAGGED FOR REVIEW';
+                    reasoning = `Known vendor but amount exceeds $500 policy. Full context prepared (last 12 invoices, cash position healthy). Mobile approval link sent.`;
+                    color = 'text-amber-400';
+                }
+            } else if (vendorType === 'new') {
+                decision = 'HUMAN REVIEW REQUIRED';
+                reasoning = `New vendor detected. Graph similarity search found 3 comparable vendors (avg trust 82%). Risk score: medium. Full reasoning trace + recommended action prepared for your review.`;
+                color = 'text-rose-400';
+            } else {
+                decision = 'ANOMALY — HUMAN REVIEW';
+                reasoning = `Amount 3.2× historical average for this vendor. Possible explanations ranked: 1) Bulk seasonal order (68% likelihood), 2) Pricing change (22%), 3) Error (10%). Full graph context + explanation sent to mobile.`;
+                color = 'text-rose-400';
+            }
+            
+            resultDiv.innerHTML = `
+                <div class="flex items-center justify-between mb-3">
+                    <div>
+                        <span class="font-semibold ${color}">${decision}</span>
+                    </div>
+                    <div class="text-xs px-3 py-1 bg-white/10 rounded">CONFIDENCE: ${vendorType === 'known' ? '96' : vendorType === 'new' ? '74' : '61'}%</div>
+                </div>
+                <div class="text-xs leading-relaxed text-white/80">${reasoning}</div>
+                <div class="mt-4 text-[10px] text-white/40 font-mono">Reasoning trace generated in 187ms • Graph query: 12ms • LLM call: 142ms</div>
+            `;
+            resultDiv.classList.remove('hidden');
+            resultDiv.classList.add('block');
+        }
+        
+        // Demo modal
+        function showDemoModal() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/95 z-[200] flex items-center justify-center p-6';
+            modal.innerHTML = `
+                <div class="max-w-2xl w-full glass p-12 rounded-[3rem] relative">
+                    <button onclick="this.closest('.fixed').remove()" class="absolute top-6 right-6 text-white/60 hover:text-white">✕</button>
+                    
+                    <div class="text-center">
+                        <div class="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-[#00f3ff] to-[#c026ff] flex items-center justify-center mb-8">
+                            <i class="fa-solid fa-play text-black text-4xl ml-1"></i>
+                        </div>
+                        <h3 class="text-4xl font-semibold tracking-tight mb-4">47-Second Demo</h3>
+                        <p class="text-white/70 max-w-xs mx-auto">Watch Jarvis autonomously process a full weekly AP run, flag one item for you, and learn from the outcome.</p>
+                        
+                        <div class="my-10 aspect-video bg-zinc-900 rounded-2xl flex items-center justify-center border border-white/10">
+                            <div class="text-center">
+                                <div class="text-xs uppercase tracking-[2px] mb-2 text-white/50">VIDEO PLACEHOLDER</div>
+                                <div class="font-mono text-sm">Replace with real Loom / YouTube embed</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-xs text-white/50">In production this would be a real recorded walkthrough of the system running live.</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        
+        // Initialize everything
+        function init() {
+            initializeTailwind();
+            
+            // Animate metrics on scroll (simple version)
+            const metrics = document.querySelectorAll('.metric-number');
+            metrics.forEach(el => {
+                const final = parseInt(el.textContent);
+                if (!isNaN(final)) {
+                    let current = 0;
+                    const increment = final / 40;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= final) {
+                            el.textContent = final;
+                            clearInterval(timer);
+                        } else {
+                            el.textContent = Math.floor(current);
+                        }
+                    }, 60);
+                }
+            });
+            
+            // Keyboard escape for modals
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const openModals = document.querySelectorAll('.fixed.inset-0');
+                    if (openModals.length > 0) openModals[openModals.length - 1].remove();
+                }
+            });
+            
+            // Easter egg: click logo for brain pulse
+            const logo = document.querySelector('.fa-brain');
+            if (logo) {
+                logo.addEventListener('click', () => {
+                    logo.classList.add('brain-glow');
+                    setTimeout(() => logo.classList.remove('brain-glow'), 1200);
+                });
+            }
+            
+            console.log('%c[Jarvis] Enhanced landing page initialized — ready to impress.', 'color:#00f3ff');
+        }
+        
+        window.onload = init;
+    </script>
+</body>
+</html>
