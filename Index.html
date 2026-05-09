@@ -148,7 +148,7 @@
         .mobile-nav {
             width: 100%;
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 0.5rem;
             font-size: 0.875rem;
             font-weight: 500;
@@ -287,13 +287,13 @@
             </div>
 
             <div class="mobile-nav">
-                <a href="#brain" class="mobile-nav-link">The Brain</a>
-                <a href="#architecture" class="mobile-nav-link">Architecture</a>
-                <a href="#loop" class="mobile-nav-link">How It Runs</a>
-                <a href="#graph" class="mobile-nav-link">Knowledge Graph</a>
-                <a href="#security" class="mobile-nav-link">Security</a>
+                <a href="#brain" class="mobile-nav-link" aria-label="Jump to The Brain section">The Brain</a>
+                <a href="#architecture" class="mobile-nav-link" aria-label="Jump to Architecture section">Architecture</a>
+                <a href="#loop" class="mobile-nav-link" aria-label="Jump to How It Runs section">How It Runs</a>
+                <a href="#graph" class="mobile-nav-link" aria-label="Jump to Knowledge Graph section">Knowledge Graph</a>
+                <a href="#security" class="mobile-nav-link" aria-label="Jump to Security section">Security</a>
                 <a href="https://graph.skdev-371.workers.dev/" target="_blank" rel="noopener noreferrer"
-                   class="live-graph-link">
+                   class="live-graph-link" aria-label="Open Live Graph in a new tab">
                     <i class="fa-solid fa-diagram-project text-xs"></i>
                     Live Graph
                 </a>
