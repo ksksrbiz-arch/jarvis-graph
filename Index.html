@@ -131,6 +131,22 @@
             column-gap: 0.75rem;
         }
 
+        .brand-icon {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00f3ff, #c026ff, #7c3aed);
+        }
+
+        .brand-icon-symbol {
+            color: black;
+            font-size: 1.875rem;
+            line-height: 1;
+        }
+
         .desktop-nav {
             display: none;
             align-items: center;
@@ -252,8 +268,8 @@
     <nav class="site-nav glass">
         <div class="nav-inner">
             <div class="nav-brand">
-                <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#00f3ff] via-[#c026ff] to-[#7c3aed] flex items-center justify-center">
-                    <i class="fa-solid fa-brain text-black text-3xl"></i>
+                <div class="brand-icon">
+                    <i class="brand-icon-symbol fa-solid fa-brain"></i>
                 </div>
                 <div>
                     <span class="font-display text-3xl font-semibold tracking-tighter">JARVIS</span>
@@ -262,11 +278,11 @@
             </div>
             
             <div class="desktop-nav">
-                <a href="#brain" class="hover:text-[#00f3ff] transition-colors">The Brain</a>
-                <a href="#architecture" class="hover:text-[#00f3ff] transition-colors">Architecture</a>
-                <a href="#loop" class="hover:text-[#00f3ff] transition-colors">How It Runs</a>
-                <a href="#graph" class="hover:text-[#00f3ff] transition-colors">Knowledge Graph</a>
-                <a href="#security" class="hover:text-[#00f3ff] transition-colors">Security</a>
+                <a href="#brain">The Brain</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#loop">How It Runs</a>
+                <a href="#graph">Knowledge Graph</a>
+                <a href="#security">Security</a>
                 <a href="https://graph.skdev-371.workers.dev/" target="_blank" rel="noopener noreferrer"
                    class="live-graph-link">
                     <i class="fa-solid fa-diagram-project text-xs"></i>
