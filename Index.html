@@ -110,6 +110,8 @@
             left: 0;
             right: 0;
             z-index: 50;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 40px rgba(2, 6, 23, 0.45);
         }
 
         .nav-inner {
@@ -152,7 +154,7 @@
             font-weight: 500;
         }
 
-        .mobile-nav a {
+        .mobile-nav-link {
             border-radius: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.05);
@@ -230,9 +232,9 @@
 </head>
 <body class="text-white overflow-x-hidden">
     <!-- NAV -->
-    <nav class="site-nav fixed top-0 left-0 right-0 z-50 glass border-b border-white/15 shadow-[0_8px_40px_rgba(2,6,23,0.45)]">
-        <div class="nav-inner max-w-7xl mx-auto px-4 sm:px-8 py-4 md:py-5 flex flex-wrap items-center justify-between gap-y-4">
-            <div class="nav-brand flex items-center gap-x-3">
+    <nav class="site-nav glass">
+        <div class="nav-inner">
+            <div class="nav-brand">
                 <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#00f3ff] via-[#c026ff] to-[#7c3aed] flex items-center justify-center">
                     <i class="fa-solid fa-brain text-black text-3xl"></i>
                 </div>
@@ -242,39 +244,39 @@
                 </div>
             </div>
             
-            <div class="desktop-nav hidden md:flex items-center gap-x-10 text-sm font-medium">
+            <div class="desktop-nav">
                 <a href="#brain" class="hover:text-[#00f3ff] transition-colors">The Brain</a>
                 <a href="#architecture" class="hover:text-[#00f3ff] transition-colors">Architecture</a>
                 <a href="#loop" class="hover:text-[#00f3ff] transition-colors">How It Runs</a>
                 <a href="#graph" class="hover:text-[#00f3ff] transition-colors">Knowledge Graph</a>
                 <a href="#security" class="hover:text-[#00f3ff] transition-colors">Security</a>
                 <a href="https://graph.skdev-371.workers.dev/" target="_blank" rel="noopener noreferrer"
-                   class="live-graph-link flex items-center gap-x-1.5 px-4 py-1.5 rounded-3xl border border-[#00f3ff]/40 bg-[#00f3ff]/10 text-[#00f3ff] hover:bg-[#00f3ff]/20 transition-colors">
+                   class="live-graph-link flex items-center gap-x-1.5 px-4 py-1.5 rounded-3xl">
                     <i class="fa-solid fa-diagram-project text-xs"></i>
                     Live Graph
                 </a>
             </div>
             
-            <div class="nav-actions flex flex-wrap items-center justify-end gap-3">
+            <div class="nav-actions">
                 <button onclick="showDemoModal()"
-                        class="nav-button nav-button-secondary px-4 sm:px-6 py-2.5 text-sm font-semibold rounded-3xl border border-white/30 hover:bg-white/5 transition-all">
+                        class="nav-button nav-button-secondary">
                     Watch 42s Demo
                 </button>
                 <button onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })"
-                        class="nav-button nav-button-primary px-5 sm:px-8 py-2.5 bg-white text-black font-semibold rounded-3xl hover:bg-[#00f3ff] hover:text-black transition-all flex items-center gap-x-2 text-sm">
+                        class="nav-button nav-button-primary flex items-center gap-x-2">
                     <span>Request Access</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </button>
             </div>
 
-            <div class="mobile-nav w-full md:hidden grid grid-cols-2 gap-2 text-sm font-medium">
-                <a href="#brain" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">The Brain</a>
-                <a href="#architecture" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">Architecture</a>
-                <a href="#loop" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">How It Runs</a>
-                <a href="#graph" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">Knowledge Graph</a>
-                <a href="#security" class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-center hover:text-[#00f3ff] hover:border-[#00f3ff]/40 transition-colors">Security</a>
+            <div class="mobile-nav">
+                <a href="#brain" class="mobile-nav-link">The Brain</a>
+                <a href="#architecture" class="mobile-nav-link">Architecture</a>
+                <a href="#loop" class="mobile-nav-link">How It Runs</a>
+                <a href="#graph" class="mobile-nav-link">Knowledge Graph</a>
+                <a href="#security" class="mobile-nav-link">Security</a>
                 <a href="https://graph.skdev-371.workers.dev/" target="_blank" rel="noopener noreferrer"
-                   class="live-graph-link rounded-2xl border border-[#00f3ff]/40 bg-[#00f3ff]/10 px-3 py-2 text-center text-[#00f3ff] hover:bg-[#00f3ff]/20 transition-colors">
+                   class="mobile-nav-link live-graph-link">
                     Live Graph
                 </a>
             </div>
